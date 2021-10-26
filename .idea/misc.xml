@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Alex/AndroidStudioProjects/AudioBB/app/src/main/res/layout-small-land/smalllandscape.xml" value="0.1662257495590829" />
+        <entry key="..\:/Users/Alex/AndroidStudioProjects/AudioBB/app/src/main/res/layout-small-port/smallportrait.xml" value="0.19635416666666666" />
+        <entry key="..\:/Users/Alex/AndroidStudioProjects/AudioBB/app/src/main/res/layout-sw600dp/activity_main.xml" value="0.147265625" />
         <entry key="..\:/Users/Alex/AndroidStudioProjects/AudioBB/app/src/main/res/layout/activity_main.xml" value="0.18229166666666666" />
       </map>
     </option>
