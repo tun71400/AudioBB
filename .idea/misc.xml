@@ -4,11 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Alex/AndroidStudioProjects/AudioBB/app/src/main/res/layout-small-land/activity_main.xml" value="0.176" />
+        <entry key="..\:/Users/Alex/AndroidStudioProjects/AudioBB/app/src/main/res/layout-small-land/smalllandscape.xml" value="0.1728395061728395" />
         <entry key="..\:/Users/Alex/AndroidStudioProjects/AudioBB/app/src/main/res/layout-small-port/activity_main.xml" value="0.176" />
         <entry key="..\:/Users/Alex/AndroidStudioProjects/AudioBB/app/src/main/res/layout-small-port/small_portrait.xml" value="0.14010416666666667" />
+        <entry key="..\:/Users/Alex/AndroidStudioProjects/AudioBB/app/src/main/res/layout-small-port/smallportrait.xml" value="0.17657657657657658" />
         <entry key="..\:/Users/Alex/AndroidStudioProjects/AudioBB/app/src/main/res/layout-sw600dp/activity_main.xml" value="0.15546875" />
         <entry key="..\:/Users/Alex/AndroidStudioProjects/AudioBB/app/src/main/res/layout/activity_main.xml" value="0.13645833333333332" />
+        <entry key="..\:/Users/Alex/AndroidStudioProjects/AudioBB/app/src/main/res/layout/booklist.xml" value="0.264" />
         <entry key="..\:/Users/Alex/AndroidStudioProjects/AudioBB/app/src/main/res/layout/fragment_book_details.xml" value="0.20729166666666668" />
+        <entry key="..\:/Users/Alex/AndroidStudioProjects/AudioBB/app/src/main/res/layout/fragment_book_list.xml" value="0.176" />
       </map>
     </option>
   </component>
