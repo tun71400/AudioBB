@@ -4,22 +4,22 @@ import java.io.Serializable;
 
 class BookList: Serializable{
 
-    var datalist = mutableListOf<Book>()
+    private val list = ArrayList<Book>()
 
-    fun add(book: Book){
-        datalist.add(book)
+    fun add(bookAdd: Book){
+        list.add(bookAdd)
     }
 
-    fun remove(book: Book){
-        datalist.remove(book)
+    fun remove(bookRemove: Book){
+        list.remove(bookRemove)
     }
 
     fun get(index: Int):Book {
-        return datalist[index]
+        return list[index]
     }
 
     fun size():Int{
-        return datalist.size
+        return list.size
     }
 
 
