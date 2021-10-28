@@ -4,26 +4,26 @@ import java.io.Serializable;
 
 class BookList: Serializable{
 
-    private val list = ArrayList<Book>()
+    private val bookList = ArrayList<Book>()
 
     fun add(bookAdd: Book){
 
-        list.add(bookAdd)
+        bookList.add(bookAdd)
     }
 
     fun remove(bookRemove: Book){
 
-        list.remove(bookRemove)
+        bookList.remove(bookRemove)
     }
 
     fun get(index: Int):Book {
 
-        return list[index]
+        return bookList[index]
     }
 
     fun size():Int{
 
-        return list.size
+        return bookList.size
     }
 
 
