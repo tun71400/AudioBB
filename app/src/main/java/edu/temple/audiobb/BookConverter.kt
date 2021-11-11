@@ -2,10 +2,12 @@ package edu.temple.audiobb
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
+import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import android.view.View
+
+
 
 class BookConverter(_context: Context, _books: BookList, _vocl: View.OnClickListener) : RecyclerView.Adapter<BookConverter.ViewHolder>() {
 
@@ -44,3 +46,4 @@ class BookConverter(_context: Context, _books: BookList, _vocl: View.OnClickList
 
 
 }
+

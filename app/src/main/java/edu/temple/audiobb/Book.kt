@@ -1,8 +1,8 @@
 package edu.temple.audiobb
 
-class Book(newTitle: String, newAuthor: String) {
+import java.io.Serializable
 
-    var title: String = newTitle
-    var author: String = newAuthor
+class Book(val title: String, val author: String, val id: Int, val coverURL: String) : Serializable
+{
 
 }
