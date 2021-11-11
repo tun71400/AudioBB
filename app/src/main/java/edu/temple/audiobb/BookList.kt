@@ -11,6 +11,11 @@ class BookList: Serializable{
         bookList.add(bookAdd)
     }
 
+    fun clear() {
+
+        bookList.clear()
+    }
+
     fun remove(bookRemove: Book){
 
         bookList.remove(bookRemove)

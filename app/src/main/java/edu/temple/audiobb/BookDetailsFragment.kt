@@ -76,17 +76,6 @@ class BookDetailsFragment : Fragment() {
 
     }
 
-
-
-
 }
 
 
-
-
-
-
-
-
-
-}
