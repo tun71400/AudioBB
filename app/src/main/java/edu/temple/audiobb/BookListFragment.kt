@@ -1,106 +1,88 @@
 package edu.temple.audiobb
 
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import java.lang.RuntimeException
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
-import android.widget.Button
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
 
 
 
 class BookListFragment : Fragment() {
 
-    lateinit var bookList: BookList
-    lateinit var bookListView: RecyclerView
-    lateinit var layout: View
+
+    private var books: BookList? = null
+    var parentActivity: BookSelectedInterface? = null
+    val recycle: RecyclerView? = null
 
 
-    companion object {
+    override fun onAttach(context: Context) {
 
-        @JvmStatic
+        super.onAttach(context)
 
-        fun newInstance(_bookList: BookList): BookListFragment {
-
-            val frag = BookListFragment().apply {
-
-                bookList = _bookList
-                arguments = Bundle().apply {
-                    putSerializable("bookList", bookList)
-                }
-            }
-
-            return frag
+        parentActivity = if (context is BookSelectedInterface) {
+            context
+        } else {
+            throw RuntimeException("Please implement the required interface(s)")
         }
     }
-
-    interface DoubleLayout {
-
-        fun selectionMade()
-    }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-
-        arguments?.let {
-            bookList = it.getSerializable("bookList") as BookList
+        if (arguments != null) {
+            books = requireArguments().getParcelable(BOOK_LIST_KEY)
         }
     }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        return inflater.inflate(R.layout.fragment_book_list, container, false)
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?){
 
         super.onViewCreated(view, savedInstanceState)
 
-        bookListView = layout.findViewById(R.id.booklist)
-        bookListView.layoutManager = LinearLayoutManager(requireContext())
-        val adapter = BookConverter(requireContext(), bookList) {
-            updateModel(bookListView.getChildAdapterPosition(it))
+        val recycle = view.findViewById<RecyclerView>(R.id.rcvFragView)
+        val size = books?.size()
+
+        Log.d("SIZE", size.toString())
+        if (size != null){
+
+            recycle.adapter = BookConverter(books!!) {
+                parentActivity!!.bookSelected(it)
+            }
+            recycle.layoutManager= LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL,false)
         }
 
-        bookListView.adapter = adapter
-        val searchButton = layout.findViewById<Button>(R.id.searchDialogButton)
-        searchButton.setOnClickListener { (requireActivity() as Search).makeSearch() }
     }
 
-    interface Search {
-        fun makeSearch()
+    public interface BookSelectedInterface {
+
+        fun bookSelected(book: Book)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    companion object {
 
-        layout = inflater.inflate(R.layout.fragment_book_list, container, false)
-        return layout
-    }
+        private const val BOOK_LIST_KEY = "booklist"
+        @JvmStatic
 
+        fun newInstance(books: BookList?): BookListFragment {
 
-    fun updateList(bookList: BookList) {
-        this.bookList = bookList
-        val adapter = BookConverter(requireContext(), bookList) {
-            updateModel(bookListView.getChildAdapterPosition(it))
+            val fragment = BookListFragment()
+            val args = Bundle()
+            args.putParcelable(BOOK_LIST_KEY, books)
+            fragment.arguments = args
+            return fragment
         }
-        bookListView.adapter = adapter
-
-        arguments = Bundle().apply {
-            putSerializable("bookList", bookList)
-        }
-    }
-
-    private fun updateModel(index: Int) {
-
-        ViewModelProvider(requireActivity())
-            .get(BookView::class.java)
-            .setSelectedBook(bookList.get(index))
-        (requireActivity() as DoubleLayout).selectionMade()
     }
 
 }
-
 

@@ -1,26 +1,31 @@
 package edu.temple.audiobb
 
-import android.content.Context
 import android.view.LayoutInflater
-import android.widget.TextView
-import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
 import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import android.widget.ImageView
+
 
 
 
 class BookConverter(private val items: BookList, private val listener: (Book)-> Unit) :
-    RecyclerView.Adapter<BookAdapter.ViewHolder>() {
+    RecyclerView.Adapter<BookConverter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookConverter.ViewHolder {
+
         val context = parent.context
         val inflater = LayoutInflater.from(context)
         val bookView = inflater.inflate(R.layout.recycler_view_layout,parent,false)
+
         return ViewHolder(bookView)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
         val item = items[position]
+
         holder.bind(item!!)
         holder.itemView.setOnClickListener { listener(item) }
     }

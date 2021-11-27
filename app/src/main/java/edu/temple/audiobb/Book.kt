@@ -58,11 +58,14 @@ class Book : Parcelable {
 
         @JvmField
         val CREATOR: Creator<Book?> = object : Creator<Book?> {
+
             override fun createFromParcel(`in`: Parcel): Book? {
+
                 return Book(`in`)
             }
 
             override fun newArray(size: Int): Array<Book?> {
+
                 return arrayOfNulls(size)
             }
 
